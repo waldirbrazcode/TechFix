@@ -1,0 +1,1225 @@
+/* ================================================
+   STYLES.CSS — TécnicoJá Landing Page
+   ================================================
+   SUMÁRIO DE SEÇÕES:
+   1.  Variáveis CSS (tokens de design)
+   2.  Reset & Base
+   3.  Utilitários / Layout
+   4.  Componentes Globais (botões, badge, seções)
+   5.  Header & Navegação
+   6.  Hero
+   7.  Como Funciona (Steps)
+   8.  Serviços
+   9.  Para Técnicos
+   10. Depoimentos
+   11. CTA / Download
+   12. Footer
+   13. Animações
+   14. Responsividade (media queries)
+   ================================================ */
+
+
+/* ================================================
+   1. VARIÁVEIS CSS
+   Para mudar cores, fontes ou espaçamentos globalmente,
+   edite apenas esta seção.
+   ================================================ */
+:root {
+  /* Paleta principal (verde + branco) */
+  --color-green-900: #0a2e16;   /* verde escuro — texto sobre fundos verdes */
+  --color-green-700: #145a2c;   /* verde profundo — backgrounds escuros */
+  --color-green-500: #1d8a3f;   /* verde principal — botões, destaques */
+  --color-green-400: #27b850;   /* verde médio — hovers */
+  --color-green-200: #a8e6bb;   /* verde claro — tints sutis */
+  --color-green-100: #e6f7ec;   /* verde pálido — fundos de seção */
+  --color-green-50:  #f3fbf5;   /* verde quase branco */
+
+  --color-white:  #ffffff;
+  --color-gray-50:  #f7f8f7;
+  --color-gray-100: #edeeed;
+  --color-gray-300: #c4c7c4;
+  --color-gray-500: #7a8078;
+  --color-gray-700: #3b3f3a;
+  --color-gray-900: #161917;
+
+  /* Tipografia */
+  --font-display: 'Syne', sans-serif;         /* títulos grandes */
+  --font-body:    'DM Sans', sans-serif;      /* corpo de texto */
+
+  /* Espaçamentos */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;
+  --space-9:  96px;
+  --space-10: 128px;
+
+  /* Bordas */
+  --radius-sm:  6px;
+  --radius-md:  12px;
+  --radius-lg:  20px;
+  --radius-xl:  32px;
+  --radius-full: 9999px;
+
+  /* Sombras */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
+  --shadow-md: 0 4px 16px rgba(0,0,0,.10);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,.14);
+  --shadow-green: 0 8px 32px rgba(29,138,63,.25);
+
+  /* Transições */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+
+  /* Largura máxima do container */
+  --container-max: 1200px;
+  --container-pad: var(--space-5);
+}
+
+
+/* ================================================
+   2. RESET & BASE
+   Normalização básica do navegador.
+   ================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-gray-700);
+  background-color: var(--color-white);
+  overflow-x: hidden;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font: inherit;
+}
+
+/* Foco visível para acessibilidade */
+:focus-visible {
+  outline: 3px solid var(--color-green-400);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+
+/* ================================================
+   3. UTILITÁRIOS / LAYOUT
+   Classes auxiliares reutilizáveis.
+   ================================================ */
+
+/* Container centralizado com padding lateral */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+/* Espaçamento vertical padrão para seções */
+.section {
+  padding-block: var(--space-9);
+}
+
+
+/* ================================================
+   4. COMPONENTES GLOBAIS
+   Botões, badges e cabeçalhos de seção.
+   ================================================ */
+
+/* --- Botões ---
+   Uso: <a class="btn btn--primary">Texto</a>
+   Variantes: --primary | --outline | --ghost
+   Tamanhos: (padrão) | --lg
+*/
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 10px 22px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all var(--transition-base);
+  white-space: nowrap;
+}
+
+.btn--primary {
+  background: var(--color-green-500);
+  color: var(--color-white);
+  box-shadow: var(--shadow-green);
+}
+.btn--primary:hover {
+  background: var(--color-green-400);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(29,138,63,.35);
+}
+.btn--primary:active { transform: translateY(0); }
+
+.btn--outline {
+  border: 2px solid var(--color-green-500);
+  color: var(--color-green-500);
+}
+.btn--outline:hover {
+  background: var(--color-green-100);
+}
+
+.btn--ghost {
+  color: var(--color-gray-700);
+  border: 2px solid var(--color-gray-300);
+}
+.btn--ghost:hover {
+  border-color: var(--color-green-400);
+  color: var(--color-green-500);
+}
+
+.btn--lg {
+  padding: 14px 32px;
+  font-size: 1rem;
+}
+
+
+/* --- Badge / Etiqueta ---
+   Pequena pílula de destaque sobre títulos.
+*/
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 6px 14px;
+  background: var(--color-green-100);
+  color: var(--color-green-700);
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: var(--space-4);
+}
+
+
+/* --- Cabeçalho de Seção ---
+   Reutilizado em todas as seções com tag + título + descrição.
+*/
+.section__header {
+  text-align: center;
+  max-width: 640px;
+  margin-inline: auto;
+  margin-bottom: var(--space-7);
+}
+
+.section__tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-green-500);
+  margin-bottom: var(--space-3);
+}
+
+/* Versão clara para fundos escuros */
+.section__tag--light {
+  color: var(--color-green-200);
+}
+
+.section__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  color: var(--color-gray-900);
+  line-height: 1.15;
+  margin-bottom: var(--space-4);
+}
+
+.section__desc {
+  font-size: 1.05rem;
+  color: var(--color-gray-500);
+  line-height: 1.7;
+}
+
+
+/* ================================================
+   5. HEADER & NAVEGAÇÃO
+   Barra fixa no topo. Escurece ao rolar (.header--scrolled).
+   ================================================ */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+/* Estado: página rolada — adiciona sombra sutil */
+.header--scrolled {
+  border-color: var(--color-gray-100);
+  box-shadow: var(--shadow-sm);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+  gap: var(--space-5);
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--color-green-700);
+  transition: color var(--transition-fast);
+  flex-shrink: 0;
+}
+.logo:hover { color: var(--color-green-500); }
+.logo--white { color: var(--color-white); }
+.logo--white:hover { color: var(--color-green-200); }
+
+.logo__icon {
+  font-size: 1.4rem;
+}
+
+/* Links de navegação */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.nav__link {
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--color-gray-700);
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+.nav__link:hover {
+  background: var(--color-green-50);
+  color: var(--color-green-600);
+}
+
+/* Botão hamburguer (mobile) — oculto no desktop */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  padding: 4px;
+  border-radius: var(--radius-sm);
+}
+.nav-toggle span {
+  display: block;
+  height: 2px;
+  background: var(--color-gray-700);
+  border-radius: 2px;
+  transition: transform var(--transition-base), opacity var(--transition-base);
+}
+
+
+/* ================================================
+   6. HERO
+   Seção principal com mockup de app à direita.
+   ================================================ */
+.hero {
+  position: relative;
+  padding-top: calc(68px + var(--space-9)); /* compensa o header fixo */
+  padding-bottom: var(--space-9);
+  background: var(--color-green-50);
+  overflow: hidden;
+}
+
+/* Círculos decorativos de fundo */
+.hero__bg { position: absolute; inset: 0; pointer-events: none; }
+
+.hero__circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.12;
+}
+.hero__circle--1 {
+  width: 600px; height: 600px;
+  background: var(--color-green-400);
+  top: -200px; right: -150px;
+}
+.hero__circle--2 {
+  width: 300px; height: 300px;
+  background: var(--color-green-500);
+  bottom: -100px; left: -80px;
+}
+.hero__circle--3 {
+  width: 200px; height: 200px;
+  background: var(--color-green-300);
+  top: 40%; left: 45%;
+  opacity: 0.07;
+}
+
+/* Grid do hero: texto | visual */
+.hero__inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+/* Lado texto */
+.hero__content { max-width: 560px; }
+
+.hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--color-gray-900);
+  margin-bottom: var(--space-5);
+}
+.hero__title em {
+  font-style: normal;
+  color: var(--color-green-500);
+}
+
+.hero__subtitle {
+  font-size: 1.1rem;
+  color: var(--color-gray-500);
+  line-height: 1.75;
+  margin-bottom: var(--space-6);
+  max-width: 480px;
+}
+
+.hero__actions {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-7);
+}
+
+/* Prova social abaixo dos botões */
+.hero__proof {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  flex-wrap: wrap;
+}
+.proof-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.proof-item strong {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--color-gray-900);
+}
+.proof-item span {
+  font-size: 0.8rem;
+  color: var(--color-gray-500);
+}
+.proof-divider {
+  width: 1px;
+  height: 36px;
+  background: var(--color-gray-300);
+}
+
+/* --- Mockup do celular (CSS puro) --- */
+.hero__visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: floatPhone 4s ease-in-out infinite;
+}
+
+.phone-mockup {
+  width: 240px;
+  height: 480px;
+  background: var(--color-gray-900);
+  border-radius: 36px;
+  padding: 14px;
+  box-shadow: var(--shadow-lg), 0 0 0 6px var(--color-gray-700);
+  position: relative;
+}
+
+.phone-mockup__screen {
+  width: 100%;
+  height: 100%;
+  background: var(--color-white);
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Cabeçalho do app no mockup */
+.mock-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-green-500);
+  color: var(--color-white);
+  padding: 10px 14px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+/* Mapa simulado */
+.mock-map {
+  flex: 1;
+  background: var(--color-green-50);
+  position: relative;
+  overflow: hidden;
+}
+/* Grade do mapa (efeito) */
+.mock-map::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--color-green-100) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-green-100) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Pins de localização no mapa */
+.mock-map__pin {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  border: 2px solid var(--color-white);
+}
+.mock-map__pin--user {
+  background: var(--color-green-500);
+  top: 50%; left: 40%;
+  transform: translate(-50%,-50%) rotate(-45deg);
+}
+.mock-map__pin--tech {
+  background: var(--color-gray-700);
+}
+
+/* Linha de rota simulada */
+.mock-map__route {
+  position: absolute;
+  top: 44%; left: 40%;
+  width: 50px; height: 2px;
+  background: var(--color-green-400);
+  transform-origin: left center;
+  transform: rotate(-18deg);
+}
+
+/* Card inferior do app (técnico a caminho) */
+.mock-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: var(--color-white);
+  border-top: 1px solid var(--color-gray-100);
+  box-shadow: var(--shadow-sm);
+}
+.mock-card__avatar {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+.mock-card__info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.mock-card__info strong {
+  font-size: 0.75rem;
+  color: var(--color-gray-900);
+}
+.mock-card__info span {
+  font-size: 0.65rem;
+  color: var(--color-gray-500);
+}
+.mock-card__badge {
+  font-size: 0.6rem;
+  font-weight: 600;
+  background: var(--color-green-100);
+  color: var(--color-green-700);
+  padding: 3px 7px;
+  border-radius: var(--radius-full);
+}
+
+
+/* ================================================
+   7. COMO FUNCIONA (STEPS)
+   Grade de 4 passos em linha.
+   ================================================ */
+.steps { background: var(--color-white); }
+
+/* Grid de passos */
+.steps__list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-5);
+  counter-reset: none; /* numeração manual nos elementos */
+  position: relative;
+}
+
+/* Linha conectando os passos */
+.steps__list::before {
+  content: '';
+  position: absolute;
+  top: 36px; /* alinha ao centro do número */
+  left: calc(var(--space-7) + 18px);
+  right: calc(var(--space-7) + 18px);
+  height: 2px;
+  background: linear-gradient(to right, var(--color-green-200), var(--color-green-400), var(--color-green-200));
+  z-index: 0;
+}
+
+/* Card individual de passo */
+.step-card {
+  position: relative;
+  background: var(--color-gray-50);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5) var(--space-5) var(--space-6);
+  border: 1px solid var(--color-gray-100);
+  transition: box-shadow var(--transition-base), transform var(--transition-base);
+  z-index: 1;
+}
+.step-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+
+.step-card__number {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--color-white);
+  background: var(--color-green-500);
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-4);
+}
+
+.step-card__icon {
+  font-size: 1.8rem;
+  margin-bottom: var(--space-3);
+}
+
+.step-card__title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-gray-900);
+  margin-bottom: var(--space-2);
+}
+
+.step-card__text {
+  font-size: 0.875rem;
+  color: var(--color-gray-500);
+  line-height: 1.65;
+}
+
+
+/* ================================================
+   8. SERVIÇOS
+   Grade de cards de categoria de serviço.
+   ================================================ */
+.services { background: var(--color-green-50); }
+
+.services__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+/* Card de serviço individual */
+.service-card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6) var(--space-5);
+  border: 1px solid var(--color-gray-100);
+  transition: box-shadow var(--transition-base), transform var(--transition-base), border-color var(--transition-base);
+  cursor: default;
+}
+.service-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+  border-color: var(--color-green-200);
+}
+
+/* Variante "e mais" — estilo diferenciado */
+.service-card--more {
+  background: var(--color-green-100);
+  border-color: var(--color-green-200);
+}
+.service-card--more:hover {
+  border-color: var(--color-green-400);
+}
+
+.service-card__icon {
+  font-size: 2rem;
+  margin-bottom: var(--space-3);
+}
+
+.service-card__name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-gray-900);
+  margin-bottom: var(--space-2);
+}
+
+.service-card__desc {
+  font-size: 0.875rem;
+  color: var(--color-gray-500);
+  line-height: 1.6;
+}
+
+
+/* ================================================
+   9. PARA TÉCNICOS
+   Fundo verde escuro. Grid: texto | card de ganhos.
+   ================================================ */
+.for-techs {
+  background: var(--color-green-700);
+  color: var(--color-white);
+}
+
+/* Substitui a cor dos títulos de seção para contexto escuro */
+.for-techs .section__title {
+  color: var(--color-white);
+}
+
+.for-techs__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.for-techs__desc {
+  font-size: 1.05rem;
+  color: var(--color-green-200);
+  line-height: 1.75;
+  margin-bottom: var(--space-6);
+}
+
+/* Lista de benefícios */
+.benefits__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  margin-bottom: var(--space-7);
+}
+
+.benefit {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+}
+
+.benefit__icon {
+  font-size: 1.5rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.benefit strong {
+  display: block;
+  font-weight: 600;
+  color: var(--color-white);
+  margin-bottom: 2px;
+}
+
+.benefit p {
+  font-size: 0.9rem;
+  color: var(--color-green-200);
+  line-height: 1.6;
+}
+
+/* --- Card de Ganhos (ilustração) --- */
+.earnings-card {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.earnings-card__label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--color-green-200);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: var(--space-2);
+}
+
+.earnings-card__value {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-white);
+  margin-bottom: var(--space-5);
+}
+
+/* Barras do mini-gráfico */
+.earnings-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-2);
+  height: 80px;
+  margin-bottom: var(--space-4);
+}
+
+.bar {
+  flex: 1;
+  height: var(--h, 50%);
+  background: rgba(255,255,255,0.2);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  transition: background var(--transition-base);
+}
+.bar--today { background: var(--color-green-400); }
+.bar:hover   { background: rgba(255,255,255,0.4); }
+
+.earnings-card__sub {
+  font-size: 0.85rem;
+  color: var(--color-green-200);
+}
+
+
+/* ================================================
+   10. DEPOIMENTOS
+   Grade de 3 cards de avaliação.
+   ================================================ */
+.testimonials { background: var(--color-white); }
+
+.testimonials__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+}
+
+.testimonial-card {
+  background: var(--color-gray-50);
+  border: 1px solid var(--color-gray-100);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  transition: box-shadow var(--transition-base), transform var(--transition-base);
+}
+.testimonial-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+.testimonial-card__stars {
+  color: #f5a623;
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
+
+.testimonial-card__text {
+  font-size: 0.95rem;
+  color: var(--color-gray-700);
+  line-height: 1.75;
+  flex: 1;
+  font-style: italic;
+}
+
+.testimonial-card__author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-gray-100);
+}
+
+.testimonial-card__avatar {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.testimonial-card__author strong {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--color-gray-900);
+}
+.testimonial-card__author span {
+  font-size: 0.8rem;
+  color: var(--color-gray-500);
+}
+
+
+/* ================================================
+   11. CTA / DOWNLOAD
+   Seção final com fundo verde e botões de loja.
+   ================================================ */
+.cta-download {
+  position: relative;
+  background: var(--color-green-500);
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Fundo geométrico decorativo */
+.cta-download__bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(255,255,255,0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(0,0,0,0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.cta-download__inner {
+  position: relative;
+}
+
+.cta-download__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: var(--color-white);
+  line-height: 1.15;
+  margin-bottom: var(--space-4);
+}
+
+.cta-download__desc {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: var(--space-7);
+  max-width: 480px;
+  margin-inline: auto;
+}
+
+/* Botões das lojas (App Store / Google Play) */
+.store-buttons {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.store-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: rgba(255,255,255,0.12);
+  border: 2px solid rgba(255,255,255,0.3);
+  color: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: 12px 24px;
+  transition: background var(--transition-base), transform var(--transition-base);
+  min-width: 180px;
+}
+.store-btn:hover {
+  background: rgba(255,255,255,0.22);
+  transform: translateY(-2px);
+}
+
+.store-btn__icon {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.store-btn small {
+  display: block;
+  font-size: 0.7rem;
+  opacity: 0.8;
+}
+.store-btn strong {
+  display: block;
+  font-size: 1rem;
+}
+
+
+/* ================================================
+   12. FOOTER
+   Rodapé escuro com links organizados em colunas.
+   ================================================ */
+.footer {
+  background: var(--color-green-900);
+  color: rgba(255,255,255,0.7);
+}
+
+.footer__inner {
+  display: grid;
+  grid-template-columns: 1.5fr 2fr;
+  gap: var(--space-8);
+  padding-block: var(--space-9);
+}
+
+/* Coluna da marca */
+.footer__brand p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin-top: var(--space-3);
+  max-width: 240px;
+}
+
+/* Navegação do footer */
+.footer__nav {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.footer__col h4 {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-white);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: var(--space-4);
+}
+
+.footer__col ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.footer__col a {
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.6);
+  transition: color var(--transition-fast);
+}
+.footer__col a:hover {
+  color: var(--color-green-200);
+}
+
+/* Barra inferior */
+.footer__bottom {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-block: var(--space-5);
+}
+.footer__bottom p {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.35);
+  text-align: center;
+}
+
+
+/* ================================================
+   13. ANIMAÇÕES
+   Keyframes usadas na página.
+   ================================================ */
+
+/* Flutuação do mockup do celular */
+@keyframes floatPhone {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-12px); }
+}
+
+/* Fade + slide de entrada (para elementos com .animate) */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Aplica animação de entrada aos elementos principais do hero */
+.hero__content > * {
+  animation: fadeSlideUp 0.6s ease both;
+}
+.hero__content > *:nth-child(1) { animation-delay: 0.1s; }
+.hero__content > *:nth-child(2) { animation-delay: 0.2s; }
+.hero__content > *:nth-child(3) { animation-delay: 0.3s; }
+.hero__content > *:nth-child(4) { animation-delay: 0.4s; }
+.hero__content > *:nth-child(5) { animation-delay: 0.5s; }
+
+/* Respeita preferência de movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .hero__visual { animation: none; }
+}
+
+
+/* ================================================
+   14. RESPONSIVIDADE
+   Breakpoints (de cima pra baixo):
+   - max 1024px → tablet landscape
+   - max 768px  → tablet portrait / celular grande
+   - max 480px  → celular pequeno
+   ================================================ */
+
+/* --- TABLET LANDSCAPE (≤1024px) --- */
+@media (max-width: 1024px) {
+
+  /* Reduz grid do hero para empilhamento */
+  .hero__inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .hero__content { max-width: 100%; }
+  .hero__title { font-size: clamp(2rem, 5vw, 3rem); }
+  .hero__subtitle { margin-inline: auto; }
+  .hero__actions { justify-content: center; }
+  .hero__proof { justify-content: center; }
+
+  /* Esconde o mockup (muito espaço, mas opcional) */
+  .hero__visual { display: none; }
+
+  /* Steps em 2 colunas */
+  .steps__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  /* Remove linha conectora (não faz sentido em 2 cols) */
+  .steps__list::before { display: none; }
+
+  /* Serviços em 2 colunas */
+  .services__grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Para técnicos: empilha */
+  .for-techs__inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .benefit { text-align: left; }
+  .for-techs .btn { align-self: center; }
+
+  /* Depoimentos em 1 coluna */
+  .testimonials__grid { grid-template-columns: 1fr; max-width: 560px; margin-inline: auto; }
+
+  /* Footer compacto */
+  .footer__inner { grid-template-columns: 1fr; gap: var(--space-6); }
+  .footer__brand p { max-width: 100%; }
+}
+
+
+/* --- TABLET / MOBILE (≤768px) --- */
+@media (max-width: 768px) {
+
+  /* Ajusta padding das seções */
+  .section { padding-block: var(--space-7); }
+  :root { --container-pad: var(--space-4); }
+
+  /* --- Header mobile --- */
+  .nav-toggle { display: flex; } /* mostra hamburguer */
+
+  /* Nav vira menu dropdown */
+  .nav {
+    position: fixed;
+    top: 68px;
+    left: 0; right: 0;
+    background: var(--color-white);
+    border-bottom: 1px solid var(--color-gray-100);
+    box-shadow: var(--shadow-md);
+    flex-direction: column;
+    padding: var(--space-5);
+    gap: var(--space-4);
+    /* Oculto por padrão */
+    display: none;
+  }
+  /* Classe adicionada via JS ao clicar no hamburguer */
+  .nav--open { display: flex; }
+
+  .nav__list {
+    flex-direction: column;
+    width: 100%;
+    gap: var(--space-1);
+  }
+  .nav__link {
+    display: block;
+    padding: 10px 12px;
+    font-size: 1rem;
+  }
+  .nav__cta { width: 100%; justify-content: center; }
+
+  /* Hero */
+  .hero { padding-top: calc(68px + var(--space-7)); }
+  .hero__title { font-size: 2rem; }
+
+  /* Steps: 1 coluna */
+  .steps__list { grid-template-columns: 1fr; }
+
+  /* Serviços: 1 coluna */
+  .services__grid { grid-template-columns: 1fr; }
+
+  /* Depoimentos */
+  .testimonials__grid { grid-template-columns: 1fr; }
+
+  /* Footer nav: 2 colunas */
+  .footer__nav { grid-template-columns: repeat(2, 1fr); }
+
+  /* Store buttons */
+  .store-buttons { flex-direction: column; align-items: center; }
+  .store-btn { width: 100%; max-width: 260px; justify-content: center; }
+}
+
+
+/* --- MOBILE PEQUENO (≤480px) --- */
+@media (max-width: 480px) {
+
+  .hero__title { font-size: 1.8rem; }
+  .hero__actions { flex-direction: column; }
+  .hero__actions .btn { width: 100%; justify-content: center; }
+
+  .hero__proof { flex-direction: column; gap: var(--space-3); }
+  .proof-divider { display: none; }
+
+  /* Footer nav: 1 coluna */
+  .footer__nav { grid-template-columns: 1fr; }
+
+  /* CTA */
+  .cta-download__title { font-size: 1.8rem; }
+}

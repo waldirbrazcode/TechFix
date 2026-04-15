@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TécnicoJá — Serviços Técnicos On-Demand</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Fonte principal: Syne (display) + DM Sans (corpo) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ================================================
+       HEADER / NAVEGAÇÃO
+       Barra de topo fixa com logo e links de menu.
+       Para editar: altere os itens do <ul> ou o nome da marca.
+  ================================================ -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+
+      <!-- Logo da marca -->
+      <a href="#" class="logo">
+        <span class="logo__icon" aria-hidden="true">⚡</span>
+        TécnicoJá
+      </a>
+
+      <!-- Botão hamburguer (visível apenas no mobile) -->
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- Links de navegação principal -->
+      <nav class="nav" id="mainNav" aria-label="Menu principal">
+        <ul class="nav__list">
+          <li><a href="#como-funciona" class="nav__link">Como Funciona</a></li>
+          <li><a href="#servicos" class="nav__link">Serviços</a></li>
+          <li><a href="#tecnicos" class="nav__link">Para Técnicos</a></li>
+          <li><a href="#depoimentos" class="nav__link">Depoimentos</a></li>
+        </ul>
+        <!-- CTA no menu -->
+        <a href="#download" class="btn btn--outline nav__cta">Baixar App</a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <!-- ================================================
+       HERO SECTION
+       Seção principal acima do dobra.
+       Para editar: altere o headline, subtítulo e botões.
+  ================================================ -->
+  <section class="hero" id="hero">
+    <!-- Decoração de fundo (círculos geométricos) -->
+    <div class="hero__bg" aria-hidden="true">
+      <div class="hero__circle hero__circle--1"></div>
+      <div class="hero__circle hero__circle--2"></div>
+      <div class="hero__circle hero__circle--3"></div>
+    </div>
+
+    <div class="container hero__inner">
+
+      <!-- Conteúdo de texto do hero -->
+      <div class="hero__content">
+        <!-- Badge de chamada -->
+        <span class="badge">🚀 O iFood dos serviços técnicos</span>
+
+        <h1 class="hero__title">
+          Técnico qualificado<br/>
+          <em>na sua porta</em><br/>
+          em minutos
+        </h1>
+
+        <p class="hero__subtitle">
+          Conectamos você a profissionais certificados de elétrica, hidráulica,
+          ar-condicionado e muito mais — com rastreio em tempo real, pagamento
+          seguro e garantia documentada no app.
+        </p>
+
+        <!-- Botões de ação primários -->
+        <div class="hero__actions">
+          <a href="#download" class="btn btn--primary btn--lg">
+            Solicitar Serviço Agora
+          </a>
+          <a href="#como-funciona" class="btn btn--ghost btn--lg">
+            Ver como funciona ↓
+          </a>
+        </div>
+
+        <!-- Indicadores sociais / prova rápida -->
+        <div class="hero__proof">
+          <div class="proof-item">
+            <strong>+12 mil</strong>
+            <span>técnicos ativos</span>
+          </div>
+          <div class="proof-divider" aria-hidden="true"></div>
+          <div class="proof-item">
+            <strong>4.9★</strong>
+            <span>avaliação média</span>
+          </div>
+          <div class="proof-divider" aria-hidden="true"></div>
+          <div class="proof-item">
+            <strong>98%</strong>
+            <span>resolvidos no dia</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mockup / visual do app (ilustração CSS) -->
+      <div class="hero__visual" aria-label="Mockup do aplicativo">
+        <div class="phone-mockup">
+          <div class="phone-mockup__screen">
+
+            <!-- Cabeçalho do mockup -->
+            <div class="mock-header">
+              <span class="mock-header__title">TécnicoJá</span>
+              <span class="mock-header__notif">🔔</span>
+            </div>
+
+            <!-- Mapa simulado -->
+            <div class="mock-map">
+              <div class="mock-map__pin mock-map__pin--user" title="Sua localização"></div>
+              <div class="mock-map__pin mock-map__pin--tech" style="top:38%;left:58%" title="Técnico a caminho"></div>
+              <div class="mock-map__pin mock-map__pin--tech" style="top:60%;left:30%" title="Técnico disponível"></div>
+              <div class="mock-map__route" aria-hidden="true"></div>
+            </div>
+
+            <!-- Card de técnico a caminho -->
+            <div class="mock-card">
+              <div class="mock-card__avatar" aria-hidden="true">👷</div>
+              <div class="mock-card__info">
+                <strong>João Elétrica</strong>
+                <span>⭐ 4.9 · 8 min de distância</span>
+              </div>
+              <div class="mock-card__badge">A caminho</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================================================
+       COMO FUNCIONA
+       Seção de passos / jornada do usuário.
+       Para editar: altere os itens dentro de .steps__list.
+  ================================================ -->
+  <section class="section steps" id="como-funciona">
+    <div class="container">
+
+      <div class="section__header">
+        <span class="section__tag">Simples assim</span>
+        <h2 class="section__title">Como funciona?</h2>
+        <p class="section__desc">
+          Do pedido à garantia, tudo acontece dentro do app — em poucos toques.
+        </p>
+      </div>
+
+      <ol class="steps__list" role="list">
+
+        <!-- Passo 1 -->
+        <li class="step-card">
+          <div class="step-card__number" aria-hidden="true">01</div>
+          <div class="step-card__icon" aria-hidden="true">📋</div>
+          <h3 class="step-card__title">Descreva o serviço</h3>
+          <p class="step-card__text">
+            Informe o que precisa — instalação de ar-condicionado, conserto elétrico,
+            encanamento — e escolha a urgência.
+          </p>
+        </li>
+
+        <!-- Passo 2 -->
+        <li class="step-card">
+          <div class="step-card__number" aria-hidden="true">02</div>
+          <div class="step-card__icon" aria-hidden="true">📍</div>
+          <h3 class="step-card__title">Encontre técnicos próximos</h3>
+          <p class="step-card__text">
+            O app exibe profissionais disponíveis na sua região com avaliações,
+            especialidades e tempo estimado de chegada.
+          </p>
+        </li>
+
+        <!-- Passo 3 -->
+        <li class="step-card">
+          <div class="step-card__number" aria-hidden="true">03</div>
+          <div class="step-card__icon" aria-hidden="true">💬</div>
+          <h3 class="step-card__title">Receba o orçamento</h3>
+          <p class="step-card__text">
+            O técnico envia uma proposta detalhada diretamente pelo app.
+            Compare e aceite sem ligações ou idas e vindas.
+          </p>
+        </li>
+
+        <!-- Passo 4 -->
+        <li class="step-card">
+          <div class="step-card__number" aria-hidden="true">04</div>
+          <div class="step-card__icon" aria-hidden="true">✅</div>
+          <h3 class="step-card__title">Serviço + nota + garantia</h3>
+          <p class="step-card__text">
+            Após a conclusão, pague via Pix ou cartão e receba nota fiscal
+            e documento de garantia — tudo no app, sem papel.
+          </p>
+        </li>
+
+      </ol>
+    </div>
+  </section>
+
+
+  <!-- ================================================
+       SERVIÇOS
+       Grade de categorias de serviços oferecidos.
+       Para editar: adicione ou remova .service-card dentro de .services__grid.
+  ================================================ -->
+  <section class="section services" id="servicos">
+    <div class="container">
+
+      <div class="section__header">
+        <span class="section__tag">Categorias</span>
+        <h2 class="section__title">O que você pode solicitar</h2>
+      </div>
+
+      <div class="services__grid">
+
+        <!-- Card de serviço — repita o bloco abaixo para adicionar novas categorias -->
+        <div class="service-card">
+          <div class="service-card__icon" aria-hidden="true">❄️</div>
+          <h3 class="service-card__name">Ar-Condicionado</h3>
+          <p class="service-card__desc">Instalação, manutenção preventiva e limpeza</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-card__icon" aria-hidden="true">⚡</div>
+          <h3 class="service-card__name">Elétrica</h3>
+          <p class="service-card__desc">Instalações, reparos e quadros elétricos</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-card__icon" aria-hidden="true">🚿</div>
+          <h3 class="service-card__name">Hidráulica</h3>
+          <p class="service-card__desc">Vazamentos, encanamentos e instalações</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-card__icon" aria-hidden="true">🔧</div>
+          <h3 class="service-card__name">Eletrodomésticos</h3>
+          <p class="service-card__desc">Assistência técnica de geladeira, máquina e mais</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-card__icon" aria-hidden="true">🏠</div>
+          <h3 class="service-card__name">Reformas</h3>
+          <p class="service-card__desc">Pintura, gesso, pisos e revestimentos</p>
+        </div>
+
+        <div class="service-card service-card--more">
+          <div class="service-card__icon" aria-hidden="true">➕</div>
+          <h3 class="service-card__name">E muito mais</h3>
+          <p class="service-card__desc">Veja todas as categorias no app</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================
+       PARA TÉCNICOS
+       Seção de recrutamento / proposta de valor para profissionais.
+       Para editar: altere os benefícios dentro de .benefits__list.
+  ================================================ -->
+  <section class="section for-techs" id="tecnicos">
+    <div class="container for-techs__inner">
+
+      <!-- Texto -->
+      <div class="for-techs__content">
+        <span class="section__tag section__tag--light">Para Profissionais</span>
+        <h2 class="section__title">Você é técnico? Cresça com a gente.</h2>
+        <p class="for-techs__desc">
+          Cadastre-se, receba chamados na sua região, cobre seu preço e
+          receba na hora — sem intermediários, sem burocracia.
+        </p>
+
+        <ul class="benefits__list" role="list">
+          <!-- Benefício — repita o <li> para adicionar mais -->
+          <li class="benefit">
+            <span class="benefit__icon" aria-hidden="true">💰</span>
+            <div>
+              <strong>Pagamento imediato</strong>
+              <p>Receba por Pix assim que o cliente confirmar o serviço.</p>
+            </div>
+          </li>
+          <li class="benefit">
+            <span class="benefit__icon" aria-hidden="true">📅</span>
+            <div>
+              <strong>Você define sua agenda</strong>
+              <p>Ative e desative sua disponibilidade quando quiser.</p>
+            </div>
+          </li>
+          <li class="benefit">
+            <span class="benefit__icon" aria-hidden="true">🏅</span>
+            <div>
+              <strong>Reputação que vende</strong>
+              <p>Acumule avaliações e suba no ranking para receber mais chamados.</p>
+            </div>
+          </li>
+          <li class="benefit">
+            <span class="benefit__icon" aria-hidden="true">📄</span>
+            <div>
+              <strong>NF e garantia automáticas</strong>
+              <p>Documentação gerada pelo app, sem precisar de contador.</p>
+            </div>
+          </li>
+        </ul>
+
+        <a href="#download" class="btn btn--primary btn--lg">Quero ser técnico parceiro</a>
+      </div>
+
+      <!-- Visual decorativo -->
+      <div class="for-techs__visual" aria-hidden="true">
+        <div class="earnings-card">
+          <span class="earnings-card__label">Ganhos esta semana</span>
+          <span class="earnings-card__value">R$ 2.840</span>
+          <div class="earnings-bars">
+            <!-- Barras do gráfico — altere o height em % para mudar os valores -->
+            <div class="bar" style="--h:55%" title="Seg"></div>
+            <div class="bar" style="--h:70%" title="Ter"></div>
+            <div class="bar" style="--h:45%" title="Qua"></div>
+            <div class="bar" style="--h:90%" title="Qui"></div>
+            <div class="bar" style="--h:65%" title="Sex"></div>
+            <div class="bar bar--today" style="--h:80%" title="Sáb"></div>
+          </div>
+          <span class="earnings-card__sub">↑ 18% vs semana passada</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================================================
+       DEPOIMENTOS
+       Avaliações de usuários reais (ou placeholder).
+       Para editar: altere os blocos .testimonial-card.
+  ================================================ -->
+  <section class="section testimonials" id="depoimentos">
+    <div class="container">
+
+      <div class="section__header">
+        <span class="section__tag">Quem já usou</span>
+        <h2 class="section__title">O que dizem sobre nós</h2>
+      </div>
+
+      <div class="testimonials__grid">
+
+        <!-- Depoimento — repita o bloco para adicionar mais -->
+        <article class="testimonial-card">
+          <div class="testimonial-card__stars" aria-label="5 estrelas">★★★★★</div>
+          <p class="testimonial-card__text">
+            "Chamei um eletricista às 18h e em 35 minutos ele estava aqui. Pagamento
+            pelo app, nota fiscal na hora. Nunca mais vou ligar pedindo orçamento."
+          </p>
+          <footer class="testimonial-card__author">
+            <div class="testimonial-card__avatar" aria-hidden="true">👩</div>
+            <div>
+              <strong>Carla Mendes</strong>
+              <span>São Paulo, SP</span>
+            </div>
+          </footer>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="testimonial-card__stars" aria-label="5 estrelas">★★★★★</div>
+          <p class="testimonial-card__text">
+            "Como técnico de ar-condicionado, triplicar minha renda mensal foi só
+            questão de tempo. A agenda é minha, o preço é meu."
+          </p>
+          <footer class="testimonial-card__author">
+            <div class="testimonial-card__avatar" aria-hidden="true">👨‍🔧</div>
+            <div>
+              <strong>Ricardo Santos</strong>
+              <span>Técnico parceiro · Goiânia, GO</span>
+            </div>
+          </footer>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="testimonial-card__stars" aria-label="5 estrelas">★★★★★</div>
+          <p class="testimonial-card__text">
+            "Instalação de câmeras feita com perfeição. O rastreio em tempo real
+            me deu segurança de que o profissional estava a caminho de verdade."
+          </p>
+          <footer class="testimonial-card__author">
+            <div class="testimonial-card__avatar" aria-hidden="true">👨</div>
+            <div>
+              <strong>Marcos Oliveira</strong>
+              <span>Belo Horizonte, MG</span>
+            </div>
+          </footer>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================
+       CTA / DOWNLOAD
+       Seção de chamada final para baixar o app.
+       Para editar: altere os textos e links das lojas.
+  ================================================ -->
+  <section class="section cta-download" id="download">
+    <div class="cta-download__bg" aria-hidden="true"></div>
+    <div class="container cta-download__inner">
+
+      <h2 class="cta-download__title">
+        Pronto para resolver<br/>aquele serviço parado?
+      </h2>
+      <p class="cta-download__desc">
+        Baixe o app gratuitamente e tenha um técnico de confiança a poucos toques.
+      </p>
+
+      <!-- Botões das lojas de app -->
+      <div class="store-buttons">
+        <!-- Substitua href="#" pelo link real da App Store -->
+        <a href="#" class="store-btn" aria-label="Baixar na App Store">
+          <span class="store-btn__icon" aria-hidden="true">🍎</span>
+          <div>
+            <small>Disponível na</small>
+            <strong>App Store</strong>
+          </div>
+        </a>
+        <!-- Substitua href="#" pelo link real do Google Play -->
+        <a href="#" class="store-btn" aria-label="Baixar no Google Play">
+          <span class="store-btn__icon" aria-hidden="true">▶</span>
+          <div>
+            <small>Disponível no</small>
+            <strong>Google Play</strong>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================================================
+       FOOTER
+       Rodapé com links e informações da empresa.
+       Para editar: altere os links e textos abaixo.
+  ================================================ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+
+      <!-- Coluna da marca -->
+      <div class="footer__brand">
+        <a href="#" class="logo logo--white">
+          <span aria-hidden="true">⚡</span> TécnicoJá
+        </a>
+        <p>O marketplace de serviços técnicos mais confiável do Brasil.</p>
+      </div>
+
+      <!-- Links rápidos — edite os <li> para adicionar/remover links -->
+      <nav class="footer__nav" aria-label="Links do rodapé">
+        <div class="footer__col">
+          <h4>Plataforma</h4>
+          <ul>
+            <li><a href="#como-funciona">Como Funciona</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#tecnicos">Para Técnicos</a></li>
+            <li><a href="#download">Baixar App</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Empresa</h4>
+          <ul>
+            <!-- Adicione links reais quando tiver as páginas -->
+            <li><a href="#">Sobre nós</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Carreiras</a></li>
+            <li><a href="#">Imprensa</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Suporte</h4>
+          <ul>
+            <li><a href="#">Central de Ajuda</a></li>
+            <li><a href="#">Política de Privacidade</a></li>
+            <li><a href="#">Termos de Uso</a></li>
+            <li><a href="#">Contato</a></li>
+          </ul>
+        </div>
+      </nav>
+
+    </div>
+
+    <!-- Barra inferior do footer -->
+    <div class="footer__bottom">
+      <div class="container">
+        <!-- Atualize o ano conforme necessário -->
+        <p>© 2025 TécnicoJá. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ================================================
+       SCRIPT INLINE MÍNIMO
+       Apenas para: toggle do menu mobile e scroll suave do header.
+       Não há dependências externas.
+  ================================================ -->
+  <script>
+    // --- Menu mobile: abre/fecha ao clicar no hamburguer ---
+    const toggle = document.getElementById('navToggle');
+    const nav    = document.getElementById('mainNav');
+
+    toggle.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('nav--open');
+      toggle.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Fecha o menu ao clicar em um link (UX mobile)
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('nav--open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // --- Header: adiciona sombra ao rolar a página ---
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('header--scrolled', window.scrollY > 20);
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
